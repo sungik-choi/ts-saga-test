@@ -6,8 +6,8 @@ import AT from '../redux/ActionTypes/TodoActionType';
 function* getTodoListSaga() {
   try {
     yield delay(2000);
-    const todo = yield call(TodoAPI.getTodoList);
-    yield put({ type: AT.REQUEST_TODO_LIST_SUCCESS, payload: todo });
+    const todoList = yield call(TodoAPI.getTodoList);
+    yield put({ type: AT.REQUEST_TODO_LIST_SUCCESS, payload: todoList });
   } catch (e) {
     yield put({ type: AT.REQUEST_TODO_LIST_ERROR });
   }
