@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react';
-import Server from "../../server/fakeServer";
+import { useSelector, useDispatch } from 'react-redux';
+
+import { RootState } from '../../redux/reducers/index';
+import TodoActions from '../../redux/actions/TodoActions';
 
 function App() {
-  
+  const dispatch = useDispatch();
+  const isFetching = useSelector((state: RootState) => state.todo.isFetching);
+  const todos = useSelector((state: RootState) => state.todo.todos);
+
+  const changeTodoDone = (uuid: string) => {};
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await Server.request("ADD", "haha");
-        console.log(data);
-      } catch (e) {
-        console.log(e);
-      } 
-    }
-    fetchData();
-  }, [])
+    dispatch(TodoActions.getTodoList());
+  }, [dispatch])
 
   return (
     <div className="App">
-      Hello world
+      {isFetching && <div>loading...</div>}
+      <ul>
+        {[...todos].map(([uuid, { contents, done }]) => {
+          return <li key={uuid}>
+            <input type="checkbox" checked={done} onChange={() => changeTodoDone(uuid)} />{contents}</li>
+        })}
+      </ul>
     </div>
   );
 }

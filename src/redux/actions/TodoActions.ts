@@ -1,10 +1,16 @@
 import AT from "../ActionTypes/TodoActionType";
 
-export interface TodoListPayload {
+export interface AddTodoPayload {
   contents: string
 }
 
-function requestTodoList(contents: TodoListPayload) {
+function getTodoList() {
+  return {
+    type: AT.REQUEST_TODO_LIST,
+  }
+}
+
+function addTodo(contents: AddTodoPayload) {
   return {
     type: AT.REQUEST_ADD_TODO_LIST,
     payload: contents,
@@ -12,7 +18,8 @@ function requestTodoList(contents: TodoListPayload) {
 }
 
 const actions = {
-  requestTodoList,
+  getTodoList,
+  addTodo,
 }
 
 export default actions;
