@@ -8,8 +8,6 @@ function App() {
       try {
         const data = await Server.request("ADD", "haha");
         console.log(data);
-        const error = await Server.request("E", "1");
-        console.log(error);
       } catch (e) {
         console.log(e);
       } 
