@@ -1,10 +1,27 @@
-import React from 'react';
+import React from "react";
+import { useSelector } from "react-redux";
+
+import { RootState } from "../redux/reducers/index";
 
 function TodoList() {
+  const todos = useSelector((state: RootState) => state.todo.todos);
+  const changeTodoDone = (uuid: string) => {};
+
   return (
-    <div>
-      
-    </div>
+    <ul>
+      {[...todos].map(([uuid, { contents, done }]) => {
+        return (
+          <li key={uuid}>
+            <input
+              type="checkbox"
+              checked={done}
+              onChange={() => changeTodoDone(uuid)}
+            />
+            {contents}
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

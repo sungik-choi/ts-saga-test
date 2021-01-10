@@ -25,7 +25,7 @@ function* addTodoListSaga(action: any) {
 
 function* TodoSaga() {
   yield takeEvery(AT.REQUEST_TODO_LIST, getTodoListSaga);
-  yield takeEvery(AT.REQUEST_ADD_TODO_LIST, addTodoListSaga);
+  yield takeLatest(AT.REQUEST_ADD_TODO_LIST, addTodoListSaga);
 }
 
 export default TodoSaga;
