@@ -3,7 +3,7 @@ import { delay, call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import TodoAPI from '../redux/api/TodoAPI';
 import AT from '../redux/ActionTypes/TodoActionType';
 
-function* getTodoListSaga() {
+export function* getTodoListSaga() {
   try {
     yield delay(2000);
     const todoList = yield call(TodoAPI.getTodoList);
@@ -13,7 +13,7 @@ function* getTodoListSaga() {
   }
 };
 
-function* addTodoListSaga(action: any) {
+export function* addTodoListSaga(action: any) {
   try {
     yield delay(2000);
     const todo = yield call(TodoAPI.addTodo, action.payload);
