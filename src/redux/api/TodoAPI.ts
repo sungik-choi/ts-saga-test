@@ -12,7 +12,7 @@ export function deleteTodo(id: string) {
   return fakeServer.delete("/todo", id);
 }
 
-export function completeTodo(id: string) {
+export function changeTodoDone(id: string) {
   return fakeServer.patch("/todo", id);
 }
 
@@ -20,7 +20,7 @@ const TodoAPI = {
   getTodoList, 
   addTodo,
   deleteTodo,
-  completeTodo,
+  changeTodoDone,
 }
 
 export default TodoAPI;

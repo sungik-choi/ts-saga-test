@@ -37,11 +37,12 @@ const reducer = (state = initialState, action: any): TodoReducerState => {
         errorMessage: "",
       }
     case AT.REQUEST_ADD_TODO_LIST_SUCCESS:
+      const newTodos = new Map([...state.todos]).set(action.payload.uuid, action.payload);
       return {
         ...state,
         isFetching: false,
         errorMessage: "",
-        todos: { ...state.todos, [action.payload.uuid]: action.payload }
+        todos: newTodos,
       }
     default: return state;
   }
