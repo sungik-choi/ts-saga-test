@@ -12,6 +12,7 @@ function App() {
 
   useEffect(() => {
     dispatch(TodoActions.getTodoList());
+    console.log("test");
   }, [dispatch]);
 
   return (
